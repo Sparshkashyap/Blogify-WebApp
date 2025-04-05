@@ -18,7 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 //fix the middlewares
 
 
-app.use(express.json());
+app.use(express.json());        
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 

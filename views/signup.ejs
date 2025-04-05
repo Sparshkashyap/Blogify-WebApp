@@ -19,6 +19,14 @@
         margin-top: -7.5vh;
         width: 90vh;
       }
+      .iconbutton{
+        cursor: pointer;
+        display: flex;
+        justify-self: end;
+        margin-top: -5.5vh;
+        margin-right: 5vh;
+
+      }
     </style>
 </head>
 <body style="background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" >
@@ -56,6 +64,7 @@
             <div class="mb-3">
               <label for="password" class="form-label" style="font-weight: 500;">Password</label>
               <input type="password" class="form-control" id="password" name="password">
+              <span class="iconbutton" id="icon" onclick="toggle()">🙈</span>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
@@ -63,17 +72,26 @@
 
     </div>
 
+    <script>
+
+      function toggle(){
+
+        const pass = document.getElementById('password');
+        const icon = document.getElementById('icon');
+
+        if(pass.type === "password"){
+          pass.type = "text";
+          icon.textContent = '👁️';
+        }
+        else{
+          pass.type="password";
+          icon.textContent = '🙈';
+        }
+      }
 
 
 
-
-
-
-
-
-
-
-
+    </script>
 
     <%- include('./partials/script.ejs') %>
 </body>

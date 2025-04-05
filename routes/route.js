@@ -502,7 +502,7 @@ router.post('/forgotpassword', async (req,res) =>{
 
     const user_pic = await USER.findById(user_data._id);
 
-    console.log(user_pic.profileImage);
+    // console.log(user_pic.profileImage);
     
     
     
@@ -579,20 +579,6 @@ router.get('/myblog', async (req,res) =>{
 
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

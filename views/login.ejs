@@ -16,9 +16,14 @@
       
       }
 
+      .iconbutton{
+        cursor: pointer;
+        display: flex;
+        justify-self: end;
+        margin-top: -5.5vh;
+        margin-right: 5vh;
 
-
-
+      }
     </style>
     <%- include('./partials/head.ejs') %>
 </head>
@@ -51,7 +56,8 @@
             </div>
             <div class="mb-3">
               <label for="passwor" class="form-label" style="font-weight: 500;">Password</label>
-              <input type="password"  class="form-control" id="passwor" class="passwordInput" name="password">
+              <input type="password"  class="form-control" id="pass" class="passwordInput" name="password">
+              <span class="iconbutton" id="icon" onclick="toggle()">🙈</span>
              
             </div>
 
@@ -66,6 +72,30 @@
         </div>
 
       </div>
+      <script>
+  
+  function toggle(){
+
+      const pass = document.getElementById('pass');
+      const icon = document.getElementById('icon');
+
+      if(pass.type === "password"){
+        pass.type = "text";
+        icon.textContent = '👁️';
+      }
+      else{
+        pass.type="password";
+        icon.textContent = '🙈';
+      }
+      }
+
+
+
+
+
+
+
+      </script>
 
     <%- include('./partials/script.ejs') %>
 </body>
