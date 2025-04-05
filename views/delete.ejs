@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add blog</title>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body style="background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);">
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="container mt-4">
+
+        <% if (locals.error) { %>
+
+          <div class="alert alert-danger" role="alert">
+            <%= error %>
+          </div>
+         
+        <% } %>
+
+        <form action="/user/addblog/delete/<%= id %>" method="post">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload the cover image</label>
+            <% if (locals.image) { %>
+
+                <input class="form-control" type="file" id="formFile" name="_method" value="">
+             
+            <% } %>
+           
+          </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <% if (locals.title) { %>
+
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="_method" value="<%= title %>">
+             
+            <% } %>
+           
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">body</label>
+            <% if (locals.body) { %>
+            
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="_method"><%= body %></textarea>
+             
+            <% } %>
+          
+          </div>
+          <div>
+            <button type="submit" class="btn btn-outline-danger">Permanent Delete</button>
+          </div>
+        </form>
+
+    </div>
+     <%- include('./partials/script.ejs') %>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myblog page</title>
+    <%- include('./partials/head.ejs') %>
+    <style>
+        .temp{
+            margin: 0;
+            margin-top: 6vh;
+            display: flex;
+            flex-wrap:wrap;
+            gap:10vh;
+            justify-content: center;
+            align-items: flex-start;
+            
+        }
+        .Hover:hover{
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid #bbb;
+        }
+        .prop{
+            color: cadetblue;
+        }
+        body{
+            
+             background: linear-gradient(to left, #6a5acd, #d391de, #fb73c9, #79c3ff);
+
+        }
+   
+    </style>
+</head>     
+<body>
+
+    <!-- Navbar  -->
+    <%- include('./partials/nav.ejs') %>
+
+
+    <% if (locals.blogs) { %>
+
+
+        <div class="text-center temp">
+
+        <% blogs.forEach((blog) => { %>
+
+            <% if (JSON.stringify(blog.createdBy) == JSON.stringify(user_blog_id)) { %>
+
+
+                <div class="card Hover" style="width:15rem; flex-grow:0;">
+
+                    <img src= "<%= blog.coverImg %>" class="card-img-top " alt="" style="object-fit:cover;">
+
+                    <div class="card-body">
+                      <h5 class="card-title"><%= blog.title %></h5>
+                
+                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary">Read More</a>
+                      
+                    </div>
+
+                </div>
+             
+            <% } %>
+           
+              
+
+        <% }) %>
+
+    </div>
+    <% } %>
+
+    <%- include('./partials/script.ejs') %>
+</body>
+</html>

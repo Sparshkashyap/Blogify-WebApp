@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup page</title>
+    <%- include('./partials/head.ejs') %>
+
+    <style>
+      .div{
+        display: flex;
+        align-items: center;
+      
+        
+      }
+      .img{
+        margin-bottom: 10vh;
+        margin-left: -20vh;
+        margin-top: -7.5vh;
+        width: 90vh;
+      }
+    </style>
+</head>
+<body style="background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" >
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="container mt-2">
+
+      <% if (locals.error) { %>
+
+        <div class="alert alert-danger" role="alert" style=" padding-top: 1vh; height: 7vh;" >
+          <%= locals.error %>
+       </div>
+       
+      <% } %>
+
+    </div>
+
+    <div class="container mt-2 div">
+
+    <div class="container ">
+      <img src="/images/sign.png" alt="sign up" class="img">
+    </div>
+
+    <div class="container " style=" margin-left: 20vh; margin-right: -12vh; margin-top: -5vh;">
+
+      <form action="/user/signup" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label" style="font-weight: 500;">Full Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="name">
+              </div>
+            <div class="mb-3">
+              <label for="email" class="form-label" style="font-weight: 500;">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="email" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label" style="font-weight: 500;">Password</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <%- include('./partials/script.ejs') %>
+</body>
+</html>
