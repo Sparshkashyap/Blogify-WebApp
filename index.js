@@ -26,7 +26,8 @@ app.use(cookieParser());
 
 app.use(checkuserAuthenticationToken("token"));
 app.use(express.static("public"))
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/sk.png'));
+
   
 
 

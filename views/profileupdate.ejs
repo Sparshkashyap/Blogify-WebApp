@@ -27,7 +27,7 @@
         <form action="/user/profileImageUpdate/<%= profile_user?._id %>" method="post">
 
 
-            <img src="<%= profile_user.profileImage %>" alt="profileimage" style="width:20vh; border-radius:50%; display: flex; justify-self: center;">
+            <img src="<%= profile_user.profileImage %>" alt="profileimage" style="width:20vh; border-radius:50%; display: flex; justify-self: center;" loading="lazy">
            <div class="mb-3">
             <label for="formFile" class="form-label" style="font-weight: 500;;">Upload the cover image<span style="font-size: 3.5vh; margin-left: 5vh;">  </span></label>
             <!-- <input class="form-control" type="file" id="formFile" name="image"> -->

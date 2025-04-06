@@ -108,7 +108,7 @@
 
       <div class="container mt-4">
         <div class="img">
-            <img src="<%= blog.coverImg %>" class="IMG" alt="image">
+            <img src="<%= blog.coverImg %>" class="IMG" alt="image" loading="lazy">
         </div>
         <div class="div1">
 
@@ -120,14 +120,14 @@
         </div>
   
         <div class="container mt-4" style="display: flex; gap: 3vh; align-items: center;">
-            <img src="<%= user.profileImage%>" class="profileimage" width="100vh">
+            <img src="<%= user.profileImage%>" class="profileimage" width="100vh" loading="lazy">
             <h4><%= user.name%></h4>
             <% if (locals.newuser && locals.checkCookie) { %>
                   
                     <% if (newuser._id == ID) { %>
 
 
-                    <a href="<%= `/user/profileImageUpdate/${newuser._id}` %>" style="cursor: pointer; text-decoration: none;"><img src="/images/updateimg.png" alt="profileuploadedimage" class="checkicon"></a>
+                    <a href="<%= `/user/profileImageUpdate/${newuser._id}` %>" style="cursor: pointer; text-decoration: none;"><img src="/images/updateimg.png" alt="profileuploadedimage" class="checkicon" loading="lazy"></a>
 
                  
                      
@@ -198,7 +198,7 @@
 
                     <% if (JSON.stringify( li_child.createdBy) == JSON.stringify(li._id)) { %>
                                
-                        <img src="<%= li.profileImage %>" alt="" class="pic" style="border-radius:50%; box-shadow: 1px 1px 3px 2px rgb(165, 162, 162);" >
+                        <img src="<%= li.profileImage %>" alt="" class="pic" style="border-radius:50%; box-shadow: 1px 1px 3px 2px rgb(165, 162, 162);" loading="lazy" >
                         <h6> <%= li.name%></h6>  
 
                     <% } %>
