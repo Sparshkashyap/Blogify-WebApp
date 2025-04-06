@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 app.use(checkuserAuthenticationToken("token"));
 app.use(express.static("public"))
-// app.use('/images', express.static('images'));   
+app.use('/images', express.static('images'));   
 // app.use(express.static(path.resolve("./public")));   
 
 
