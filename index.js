@@ -43,4 +43,4 @@ app.use("/user",Routelinks);
 
 
 // listen the port
-app.listen(port,()=>console.log(`Server connected...${port}🎉`));
+app.listen(port,'0.0.0.0',()=>console.log(`Server connected...${port}🎉`));

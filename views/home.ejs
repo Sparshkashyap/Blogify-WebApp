@@ -47,12 +47,20 @@
         }
         body{
             
-             background: linear-gradient(to left, #6a5acd, #d391de, #fb73c9, #79c3ff);
+             background: #141414;
+             /* background: linear-gradient(to left, #c3bbf8, #f5cafd, #a2d4fd); */
 
         }
    
     </style>
  <link rel="icon" href="/images/sk.png">
+
+
+
+  <style>
+
+  </style>
+
 </head>         
 <body>
 
@@ -72,7 +80,7 @@
                     <div class="card-body">
                       <h5 class="card-title"><%= blog.title %></h5>
                 
-                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary">Read More</a>
+                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary">Read More</a><span class="icon">
 
                     </div>
 

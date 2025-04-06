@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signin page</title>
     <style>
-      .box{
+
+      @media (max-width:700px){
+        .icon{
+          display: none;
+        }
+        .iconbutton{
+        cursor: pointer;
+        display: flex;
+        justify-self: end;
+        margin-top: -4vh;
+        margin-right: 5vh;
+        font-size: 2.2vh;
+
+      }
+      .forgot{
+
+        text-decoration: none;
+        color: blue;
+        margin-top: -6vh;
+        font-weight: 500;
+
+      }
+
+      }
+      @media (min-width:700px){
+        .box{
         
         display: flex;
         align-items: center;
@@ -23,6 +48,21 @@
         margin-top: -5.5vh;
         margin-right: 5vh;
 
+      }
+      .icon{
+        width: 16vh;
+        display: flex;
+        justify-self: center;
+        margin-top: -9vh;
+      }
+      .forgot{
+        text-decoration: none;
+         color: blue;
+          margin-top: -10vh;
+           font-weight: 500;
+
+      }
+  
       }
     </style>
     <%- include('./partials/head.ejs') %>
@@ -47,7 +87,8 @@
         </div>
         <div class="logindiv">
           <div class="container mt-3">
-            <img src="/images/log.png" alt="" style="width: 16vh;    display: flex;   justify-self: center; margin-top: -9vh;" loading="lazy">
+            <img src="/images/log.png" alt="" loading="lazy" class="icon">
+
           </div>
           
           <div>
@@ -61,8 +102,7 @@
             </div>
             <div class="mb-3">
               <label for="passwor" class="form-label" style="font-weight: 500;">Password</label>
-              <input type="password"  class="form-control" id="pass" class="passwordInput" name="password">
-              <span class="iconbutton" id="icon" onclick="toggle()">🙈</span>
+              <input type="password"  class="form-control" id="pass" class="passwordInput" name="password"> <span class="iconbutton" id="icon" onclick="toggle()">🙈</span>
              
             </div>
 
@@ -71,7 +111,7 @@
           </form>
           <div class="container mt-4" style=" display: flex; justify-content: end; ">
 
-            <a href="/user/forgotpassword" style="text-decoration: none; color: blue; margin-top: -10vh; font-weight: 500;"> Forgot password</a>
+            <a href="/user/forgotpassword"  class="forgot"> Forgot password</a>
       
           </div>
           <h6 style="padding-top: 1vh; color: #484e4f;">New to Blogify?  <span > <a href="/user/signup" style="text-decoration: none;">Create account </a></span></h6>

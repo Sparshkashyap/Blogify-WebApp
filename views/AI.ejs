@@ -11,15 +11,61 @@
 
         .inputfield{
 
-            width: 30vh; 
+            width: 42vh; 
             font-weight:500;
-            font-size: 3vh; 
-            margin-left: -25vh;
+            font-size: 2.5vh; 
+            margin-left: 2vh;
+            margin-right: 0v;
+         
+          
+           
 
         }
         .text{
             width: 44vh;
+            /* border:2px solid gray; */
+            margin-left: -1vh;
+          
             
+            
+        }
+        .text-heading{
+
+            /* border:2px solid gray; */
+            font-size: 3vh;
+            justify-self: center;
+            margin-top: 3vh;
+
+
+        }
+        .show{
+            width: 45vh;
+            height: 50vh;
+            /* border: 2px solid gray; */
+
+
+        }
+        .pad{
+
+            /* border: 2px solid gray; */
+
+        }
+        .sub{
+            /* border: 2px solid gray; */
+            justify-self: end;
+            font-size: 3vh;
+            padding-right: 5vh;
+            padding-top: 2vh;
+        
+        }
+        .button{
+            display: none;
+        }
+        .but{
+            font-size: 4vh;
+        }
+        .laptop{
+            display: none;
         }
     }
     @media (min-width :700px){
@@ -40,6 +86,39 @@
             font-weight: 500;
 
         }
+        .text-heading{
+
+            justify-self: center;
+
+
+        }
+        .show{
+            width: 200vh;
+            height: 50vh;
+           
+
+        }
+        .box{
+            width: 50vh;
+            height: 20vh;
+            width: 210vh;
+             display:flex;
+             align-items: center;
+        }
+        .pad{
+            padding-left: 30vh;
+        }
+
+        .but{
+            display: none;
+        }
+        .button{
+            font-size: 5vh;
+        }
+        .mobile{
+            display: none;
+        }
+   
     }
     </style>
 </head>
@@ -49,13 +128,14 @@
 
     <div >
 
-        <div class="container mt-3" style=" width: 200vh; height: 50vh;">
+        <div class="container mt-3 show">
 
             <% if (locals.data) { %>
 
-                <div class="form-floating" style="padding-left: 0vh;">
+                <div class="form-floating">
 
-                    <textarea class="form-control text" placeholder="dssd" id="floatingTextarea" style=" height: 50vh; background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" name="prompt"><%= locals.data %></textarea>
+                    <textarea class="form-control text laptop" id="floatingTextarea" style=" height: 50vh; background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" name="prompt"><%= locals.data %></textarea>
+                    <textarea class="form-control text mobile" id="floatingTextarea" style="   height: 50vh; background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" name="prompt"><%= locals.data %></textarea>
                     
                 </div>
                 
@@ -63,20 +143,26 @@
             <% } %>
 
         </div>
+
         <div >
-        <h2 style="justify-self: center  ;">Batao buddy How can I help you? </h2>
+        <h2  class="text-heading">Batao buddy How can I help you? </h2>
         </div>
 
         <form action="/user/AI" method="post" >
 
-            <div style="width: 50vh; height: 20vh;  width: 210vh; display:flex; align-items: center;">
+            <div  class="box">
 
-                <div class="form-floating" style="padding-left: 30vh;">
-                    <textarea class="form-control inputfield" placeholder="dssd" id="floatingTextarea" name="prompt" ></textarea>
+                <div class="form-floating pad">
+
+                    <textarea class="form-control inputfield" id="floatingTextarea" name="prompt" ></textarea>
                     
                 </div>
+                <div class="sub">
             
-                <button type="submit" style="font-size: 5vh; border: none; background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa)">➡️</button>
+                <button type="submit" style=" border: none; background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa)" class="button">➡️</button>
+                <button type="submit" style=" border: none; background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa)" class="but">♂️</button>
+                
+                </div>
             </div>
 
         </form>

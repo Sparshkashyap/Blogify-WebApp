@@ -7,7 +7,36 @@
     <%- include('./partials/head.ejs') %>
 
     <style>
-      .div{
+    
+      @media (max-width:700px){
+        .img{
+          width: 44vh;
+          /* height: 20vh; */
+        }
+        .image{
+          /* border:2px solid gray; */
+          display: flex;
+          justify-content: center;
+        }
+        .heading{
+          /* border:2px solid gray; */
+          margin-top: 4vh;
+          margin-bottom: 5vh;
+        }
+        .iconbutton{
+        cursor: pointer;
+        display: flex;
+        justify-self: end;
+        margin-top: -4vh;
+        margin-right: 5vh;
+        font-size: 2.5vh;
+
+      }
+
+
+      }
+      @media (min-width:700px){
+        .div{
         display: flex;
         align-items: center;
       
@@ -16,7 +45,7 @@
       .img{
         margin-bottom: 10vh;
         margin-left: -20vh;
-        margin-top: -7.5vh;
+        margin-top: -2vh;
         width: 90vh;
       }
       .iconbutton{
@@ -25,6 +54,22 @@
         justify-self: end;
         margin-top: -5.5vh;
         margin-right: 5vh;
+
+      }
+      .parent{
+        margin-left: 20vh;
+         margin-right: -12vh;
+          margin-top: -5vh;
+      }
+      .h2{
+        font-size: 5vh;
+        display: flex;
+        justify-self: center;
+        margin-top: -5vh;
+        margin-bottom: 7vh;
+        position: relative;
+
+      }
 
       }
     </style>
@@ -46,14 +91,19 @@
 
     <div class="container mt-2 div">
 
-    <div class="container ">
+    <div class="container image">
       <img src="/images/sign.png" alt="sign up" class="img" loading="lazy">
     </div>
 
-    <div class="container " style=" margin-left: 20vh; margin-right: -12vh; margin-top: -5vh;">
+    <div class="container  parent">
 
       <form action="/user/signup" method="post">
-        <h2 style="font-size: 5vh;   display: flex; justify-self: center; margin-top: -5vh; margin-bottom: 7vh; position: relative;">Create your Blogify account</h2>
+
+
+        <div class="heading">
+        <h2 class="h2">Create your Blogify account</h2>
+      </div>
+
             <div class="mb-3">
                 <label for="name" class="form-label" style="font-weight: 500;">Full Name</label>
                 <input type="text" class="form-control" id="name" aria-describedby="name" name="name">
@@ -64,8 +114,7 @@
             </div>
             <div class="mb-3">
               <label for="password" class="form-label" style="font-weight: 500;">Password</label>
-              <input type="password" class="form-control" id="password" name="password">
-              <span class="iconbutton" id="icon" onclick="toggle()">👁️</span>
+              <input type="password" class="form-control" id="password" name="password"><span class="iconbutton" id="icon" onclick="toggle()">👁️</span>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <h6 style="  padding-top: 6vh; color: #484e4f;">Already have an account?    <span > <a href="/user/signin" style="text-decoration: none;">Sign in</a></span></h6>

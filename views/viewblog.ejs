@@ -6,10 +6,20 @@
     <title>view_blog</title>
     <%- include('./partials/head.ejs') %>
     <style>
-        .div1{
+       
+        @media (max-width:700px) {
+
+            .checkicon{
+
+                margin-left:-28.5vh;
+                margin-top: 5vh;
+                width: 6vh;
+        
+            }
+            .div1{
             justify-self: center;
             font-family: Segoe UI;
-            font-size: 5rem;
+            font-size: 5.2vh;
             font-weight: 700;
             text-shadow:  -2px -2px 0 aqua, 4px -1px 0 aqua, -2px 2px 0 aqua, 2px 2px 0 aqua;
             color: aliceblue;
@@ -25,7 +35,92 @@
             box-shadow: 2px 0px 10px 3px rgb(145, 139, 139);
             max-width: 100%;
             max-height: 70vh;
-            border: 2px solid #ddd;
+            /* border: 2px solid #ddd; */
+            object-fit:contain;
+            image-rendering: auto; 
+        }
+        .body{
+                justify-self: center;
+                font-weight: 700;
+                font-size: 3.0vh;
+                font-family: Segoe UI;
+                text-align: left;
+                align-items: center;
+                text-wrap:inherit;
+                gap: 3vh;
+                flex-direction: row;
+                word-wrap: break-word;
+                margin: 0%;
+                padding: 1px;
+         
+                /* border:2px solid gray; */
+                display: flex;
+                justify-content: center;
+        }
+        .a{
+            justify-self: center;
+        }
+        .aa{
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .pic{
+            width: 3rem;
+            
+        }
+        .box{
+            display: flex;
+            width: 20vh;
+            justify-content:space-between;
+            margin-bottom: 2vh;
+            margin-top: 2vh;
+        }
+        .con{
+            margin-bottom: 12vh;
+            margin-left:0vh;
+        }
+        .profileimage{
+           
+            /* border: 2px solid rgb(207, 202, 202);  */
+            border-radius: 100%; 
+            box-shadow: 2px 2px 5px 3px gray;
+            object-fit:cover;
+           
+
+        }
+   
+            
+        }
+        @media (min-width:710px) {
+
+            .checkicon{
+
+                margin-left:-40vh;
+                margin-top: 10vh;
+                width: 7vh;
+        
+            }
+            .div1{
+            justify-self: center;
+            font-family: Segoe UI;
+            font-size: 14.5vh;
+            font-weight: 700;
+            text-shadow:  -2px -2px 0 aqua, 4px -1px 0 aqua, -2px 2px 0 aqua, 2px 2px 0 aqua;
+            color: aliceblue;
+            text-align: center;
+            /* margin-left: 5vh; */
+            
+        }
+        .img{
+            justify-self: center;
+        }
+        .IMG{
+            border-radius: 2vh;
+            box-shadow: 2px 0px 10px 3px rgb(145, 139, 139);
+            max-width: 100%;
+            max-height: 70vh;
+            /* border: 2px solid #ddd; */
             object-fit:contain;
             image-rendering: auto; 
         }
@@ -70,33 +165,17 @@
         }
         .profileimage{
            
-            border: 2px solid rgb(207, 202, 202); 
+            /* border: 2px solid rgb(207, 202, 202);  */
             border-radius: 100%; 
             box-shadow: 2px 2px 5px 3px gray;
             object-fit:cover;
            
 
         }
-        @media (max-width:700px) {
-
-            .checkicon{
-
-                margin-left:-26vh;
-                margin-top: 5vh;
-                width: 6vh;
-        
-            }
-            
+        .pencil{
+            cursor: pointer;
+            text-decoration: none;
         }
-        @media (min-width:710px) {
-
-            .checkicon{
-
-                margin-left:-40vh;
-                margin-top: 10vh;
-                width: 7vh;
-        
-            }
             
         }
 
@@ -126,9 +205,8 @@
                   
                     <% if (newuser._id == ID) { %>
 
-
-                    <a href="<%= `/user/profileImageUpdate/${newuser._id}` %>" style="cursor: pointer; text-decoration: none;"><img src="/images/updateimg.png" alt="profileuploadedimage" class="checkicon" loading="lazy"></a>
-
+                    <a href="<%= `/user/profileImageUpdate/${newuser._id}` %>"  class="pencil" ><img src="/images/updateimg.png" alt="profileuploadedimage" class="checkicon" loading="lazy"></a>
+                   
                  
                      
                     <% } %>
