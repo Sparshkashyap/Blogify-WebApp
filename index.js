@@ -6,6 +6,7 @@ const {ConnectDB} = require('./config/connect');
 const Routelinks = require('./routes/route');
 const cookieParser = require('cookie-parser');
 const {checkuserAuthenticationToken} = require('./middleware/authentication');
+const favicon = require('serve-favicon');
 
 
 // connected the database
@@ -25,8 +26,8 @@ app.use(cookieParser());
 
 app.use(checkuserAuthenticationToken("token"));
 app.use(express.static("public"))
-// app.use('/images', express.static('images'));   
-// app.use(express.static(path.resolve("./public")));   
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+  
 
 
 
