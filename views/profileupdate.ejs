@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add blog</title>
     <%- include('./partials/head.ejs') %>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+  
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'a88ae0a1700a9257e787';
+    </script>
 </head>
 <body style="background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" >
     <%- include('./partials/nav.ejs') %>
@@ -19,13 +24,14 @@
          
         <% } %>
 
-        <form action="/user/profileImageUpdate/<%= profile_user?._id %>" method="post" enctype="multipart/form-data">
+        <form action="/user/profileImageUpdate/<%= profile_user?._id %>" method="post">
 
 
             <img src="<%= profile_user.profileImage %>" alt="profileimage" style="width:20vh; border-radius:50%; display: flex; justify-self: center;">
            <div class="mb-3">
-            <label for="formFile" class="form-label" style="font-weight: 500;">Upload the cover image</label>
-            <input class="form-control" type="file" id="formFile" name="image">
+            <label for="formFile" class="form-label" style="font-weight: 500;;">Upload the cover image<span style="font-size: 3.5vh; margin-left: 5vh;">  </span></label>
+            <!-- <input class="form-control" type="file" id="formFile" name="image"> -->
+            <input class="form-control" type="hidden" id="formFile" name="file" role="uploadcare-uploader">
           </div> 
             <button type="submit" class="btn btn-outline-success">Submit</button>
           </div>
@@ -33,5 +39,15 @@
         
     </div>
      <%- include('./partials/script.ejs') %>
+     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+        widget.onUploadComplete(function (info) {
+          
+          const temp = info.originalUrl
+          console.log("File info:", temp);
+        });
+      });
+    </script>
 </body>
 </html>

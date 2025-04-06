@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add blog</title>
     <%- include('./partials/head.ejs') %>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+  
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'a88ae0a1700a9257e787';
+    </script>
 </head>
 <body style="background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);" >
     <%- include('./partials/nav.ejs') %>
@@ -19,10 +24,11 @@
          
         <% } %>
 
-        <form action="/user/addblog" method="post" enctype="multipart/form-data">
+        <form action="/user/addblog" method="post">
         <div class="mb-3">
-            <label for="formFile" class="form-label" style="font-weight: 500;">Upload the cover image</label>
-            <input class="form-control" type="file" id="formFile" name="img">
+            <label for="formFile" class="form-label" style="font-weight: 500;;">Upload the cover image<span style="font-size: 3.5vh; margin-left: 5vh;">  </span></label>
+            <!-- <input class="form-control" type="file" id="formFile" name="img" > -->
+            <input class="form-control" type="hidden" id="formFile" name="file" role="uploadcare-uploader">
           </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"  style="font-weight:500;">Title</label>
@@ -36,12 +42,21 @@
             <button type="submit" class="btn btn-outline-success">Submit</button>
           </div>
         </form>
-        
-      <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-       <a href="/user/addblog/update"> <button class="btn btn-outline-warning " type="button">Update</button></a>
-       <a href="/user/addblog/delete"> <button class="btn btn-outline-danger" type="button">Delete</button> </a>
-      </div> -->
     </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+          widget.onUploadComplete(function (info) {
+            
+            const temp = info.originalUrl
+            console.log("File info:", temp);
+          });
+        });
+      </script>
+  
+
+
+
      <%- include('./partials/script.ejs') %>
 </body>
 </html>

@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add blog</title>
     <%- include('./partials/head.ejs') %>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+  
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'a88ae0a1700a9257e787';
+    </script>
 </head>
 <body style="background: linear-gradient(to left, #e6e6fa, #fffafa, #ffe4e1, #e0f7fa);">
     <%- include('./partials/nav.ejs') %>
@@ -20,17 +25,19 @@
 
         <% if (locals.id) { %>
 
-        <form action="/user/addblog/update/<%= id %>" method="post" enctype="multipart/form-data">
+        <form action="/user/addblog/update/<%= id %>" method="post" >
         <div class="mb-3">
-            <label for="formFile" class="form-label">Upload the cover image</label>
+          <label for="formFile" class="form-label" style="font-weight: 500;;">Upload the cover image<span style="font-size: 3.5vh; margin-left: 5vh;">  </span></label>
 
 
-                <input class="form-control" type="file" id="formFile" name="img" value=""/>
-                 <!-- <img src="/uploads/<%=locals.image%>" alt="image" > -->
+            <!-- <input class="form-control" type="file" id="formFile" name="img" value=""/> -->
+
+            <input class="form-control" type="hidden" id="formFile" name="file" role="uploadcare-uploader">
+        
            
           </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <label for="exampleFormControlInput1" class="form-label" style="font-weight: 600;">Title</label>
             <% if (locals.title) { %>
 
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="title" value="<%= title %>">
@@ -39,7 +46,7 @@
            
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">body</label>
+            <label for="exampleFormControlTextarea1" class="form-label" style="font-weight: 600;">body</label>
             <% if (locals.body) { %>
             
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"><%= body %></textarea>
@@ -56,11 +63,17 @@
 
     </div>
      <%- include('./partials/script.ejs') %>
-<script>
-    const img = document.getElementById("formFile");
-    img.addEventListener("change", (e)=>{
-        console.log(e.target.value)
-    })
-</script>
+
+     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+        widget.onUploadComplete(function (info) {
+          
+          const temp = info.originalUrl
+          console.log("File info:", temp);
+        });
+      });
+    </script>
+
 </body>
 </html>

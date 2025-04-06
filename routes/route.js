@@ -88,30 +88,36 @@ router.get("/addblog", async (req,res)=>{
 // Manage the cover image...(Disk Storage)
 
 
-const storage = multer.diskStorage({
+// const storage = multer.diskStorage({
 
-    destination: function (req, file, cb) {
-      cb(null, path.resolve(__dirname,`../public/uploads`));
-    },
-    filename: function (req, file, cb) {
-      const fileName = `${Date.now()}-${file.originalname}`;
-      cb(null,fileName);
-    }
-  })
+//     destination: function (req, file, cb) {
+//       cb(null, path.resolve(__dirname,`../public/uploads`));
+//     },
+//     filename: function (req, file, cb) {
+//       const fileName = `${Date.now()}-${file.originalname}`;
+//       cb(null,fileName);
+//     }
+//   })
   
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 //  
 
 
-router.post("/addblog", upload.single("img"), async (req,res)=>{
+router.post("/addblog", async (req,res)=>{
 
     try{
 
     const {title,body} = req.body;
 
-    if(! title || !body || !upload.single("img")){
+    const fileURL = req.body?.file;
+
+
+    // console.log("URL is:",fileURL);
+    
+
+    if(! title || !body || !fileURL){
 
         throw new error("please fill the input field");
     }
@@ -128,7 +134,7 @@ router.post("/addblog", upload.single("img"), async (req,res)=>{
 
         title,
         body,
-        coverImg:`/uploads/${req.file.filename}`,
+        coverImg:fileURL,
         createdBy:user_data._id
 
     });
@@ -140,7 +146,8 @@ router.post("/addblog", upload.single("img"), async (req,res)=>{
 
 catch(err){
 
-
+        // console.log(err);
+        
     return res.render('addblog',{
         error:"please fill the details"
     })
@@ -315,15 +322,16 @@ router.get('/addblog/delete/:id', async (req,res)=>{
 // ================================= Update the cover image ========================================================
 
   
-router.post("/addblog/update/:id", upload.single("img"), async (req,res)=>{
+router.post("/addblog/update/:id", async (req,res)=>{
 
     try{
 
     const {title,body} = req.body;
 
     const id = req.params.id;
+    const fileURL = req.body.file;
 
-    if(!title || !body){
+    if(!title || !body || !fileURL){
         throw new error("Error is occur");
     }
 
@@ -331,7 +339,7 @@ router.post("/addblog/update/:id", upload.single("img"), async (req,res)=>{
 
         title:title,
         body:body,
-        coverImg:`/uploads/${req.file?.filename}`,
+        coverImg:fileURL,
 
     })
     
@@ -502,7 +510,7 @@ router.post('/forgotpassword', async (req,res) =>{
 
     const user_pic = await USER.findById(user_data._id);
 
-    // console.log(user_pic.profileImage);
+    // console.log(user_pic);
     
     
     
@@ -518,25 +526,33 @@ router.post('/forgotpassword', async (req,res) =>{
  });
 
 
-router.post('/profileImageUpdate/:id',upload.single('image') ,async (req,res)=>{
+router.post('/profileImageUpdate/:id' ,async (req,res)=>{
 
 
     try{
 
     const id = req.params.id;
 
-    const bloguserId = await blog.findOne({createdBy:id});
+    // const bloguserId = await blog.findOne({createdBy:id});
 
     // const blogID = JSON.stringify(bloguserId._id);
     
 //    console.log(req.file.filename);
 //    console.log(id);
+
+
+
+        const fileURL = req.body.file;
+
+        if(!fileURL){
+            throw new error("Please enter the image")
+        }
    
    
 
     await USER.findByIdAndUpdate(id,{
 
-        profileImage:`/uploads/${req.file?.filename}`,
+        profileImage:fileURL,
 
         
     });
