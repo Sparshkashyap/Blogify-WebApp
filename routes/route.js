@@ -13,6 +13,29 @@ const { randomBytes } = require('crypto');
 const crypto = require('crypto');
 const {GoogleGenerativeAI} = require('@google/generative-ai');
 const ques  = require('../models/prompt');
+const passport = require('passport');
+
+
+// router.get('/auth/google',
+//     passport.authenticate('google', { scope: ['profile'] }));
+  
+// router.get('/auth/google/callback', 
+// passport.authenticate('google', { failureRedirect: '/login' }),
+// function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+// });
+
+
+
+
+
+
+
+
+
+
+
 
 require('dotenv').config();
 

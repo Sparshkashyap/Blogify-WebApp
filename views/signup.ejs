@@ -8,7 +8,7 @@
 
     <style>
     
-      @media (max-width:700px){
+      @media (max-width:600px){
         .img{
           width: 44vh;
           /* height: 20vh; */
@@ -33,9 +33,19 @@
 
       }
 
+      .float{
+        /* width: 200px; */
+      animation: floatUpDown 5s ease-in-out infinite;
+      }
+      @keyframes floatUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
 
       }
-      @media (min-width:700px){
+      @media (min-width:601px){
         .div{
         display: flex;
         align-items: center;
@@ -70,6 +80,16 @@
         position: relative;
 
       }
+      
+      .float{
+        /* width: 200px; */
+      animation: floatUpDown 4.5s ease-in-out infinite;
+      }
+      @keyframes floatUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
 
       }
     </style>
@@ -92,7 +112,7 @@
     <div class="container mt-2 div">
 
     <div class="container image">
-      <img src="/images/sign.png" alt="sign up" class="img" loading="lazy">
+      <img src="/images/sign.png" alt="sign up" class="img float" loading="lazy">
     </div>
 
     <div class="container  parent">
@@ -117,6 +137,7 @@
               <input type="password" class="form-control" id="password" name="password"><span class="iconbutton" id="icon" onclick="toggle()">👀</span>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- <h6><a href="/auth/google">Signup with Google</a></h6> -->
             <h6 style="  padding-top: 6vh; color: #484e4f;">Already have an account?    <span > <a href="/user/signin" style="text-decoration: none;">Sign in</a></span></h6>
           </form>
     </div>

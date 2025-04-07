@@ -35,27 +35,70 @@
             gap:10vh;
             justify-content: center;
             align-items: flex-start;
-            
+            /* position: relative; */
         }
         .Hover:hover{
             transform: scale(1.05);
-            box-shadow: 0px 8px 20px white;
+            box-shadow: 1px 5px 18px 6.5px white;
             border: 1px solid #bbb;
+            /* position: relative; */
         }
         .prop{
             color: cadetblue;
+            /* position: relative; */
         }
         body{
             
-             background: #1f1f1f;
-             /* background: linear-gradient(to left, #c3bbf8, #f5cafd, #a2d4fd); */
+             background: #211111;
+             /* background: linear-gradient(to left, #c3bbf8, #f5cafd, #a2d4fd); */ 
 
         }
-   
+        .card-s {
+      width: 300px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-img-s {
+      width: 100%;
+      height: 200px;
+      object-fit: cover; /* auto handles portrait or landscape images */
+    }
+
+    .card-content-s {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title-s {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .card-button-s {
+      margin-top: auto;
+      padding: 10px 16px;
+      margin-bottom: 3vh;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+
     </style>
  <link rel="icon" href="/images/sk.png">
-
-
 
   <style>
 
@@ -64,8 +107,16 @@
 </head>         
 <body>
 
+    <!-- client ID 1010913523499-04sk53vj3jc9fpd4vh0ol6g0eblm6461.apps.googleusercontent.com -->
+     <!-- client secret  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 -->
+
     <!-- Navbar  -->
     <%- include('./partials/nav.ejs') %>
+
+    <!-- <video autoplay muted loop>
+        <source src="/images/sp.mp4" type="video/mp4">
+      
+      </video> -->
 
 
     <% if (locals.blogs) { %>
@@ -73,14 +124,14 @@
         <div class="text-center temp">
         <% blogs.forEach((blog) => { %>
            
-                <div class="card Hover" style="width:15rem; flex-grow:0;">
+                <div class="card-s Hover" style="width:15rem; flex-grow:0;">
 
-                    <img src= "<%= blog.coverImg %>" class="card-img-top " alt="" style="object-fit:cover;" loading="lazy">
+                    <img src= "<%= blog.coverImg %>" class="card-img-top card-img-s" alt="" style="object-fit:cover;" loading="lazy">
 
                     <div class="card-body">
-                      <h5 class="card-title"><%= blog.title %></h5>
+                      <h5 class="card-title card-title-s"><%= blog.title %></h5>
                 
-                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary">Read More</a><span class="icon">
+                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary card-button-s">Read More</a><span class="icon">
 
                     </div>
 

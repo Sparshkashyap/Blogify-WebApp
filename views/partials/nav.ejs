@@ -9,15 +9,6 @@
   <style>
 
 
-a.nav-link.home {
-  color: white !important;
-  border-radius: 2vh;
-  transition: all 0.25s ease-in-out;
-  padding: 6px 12px; /* Reduce vertical & horizontal padding */
-  line-height: 1.2;   /* Tighter line height */
-  display: inline-block; /* Makes transform and padding work better */
-  margin-right: 15px;
-}
 
 a.nav-link.home:hover {
   color: black !important;
@@ -35,6 +26,7 @@ a.nav-link.temp {
   display: inline-block; /* Makes transform and padding work better */
   margin-right: 15px;
   margin-top: 0.3vh;
+  /* position: fixed; */
 
 
 }
@@ -56,6 +48,7 @@ a.nav-link.flag {
   display: inline-block; /* Makes transform and padding work better */
   margin-right: 15px;
   margin-top: 0.5vh;
+  /* position: fixed; */
 
 
 }
@@ -66,22 +59,20 @@ a.nav-link.flag:hover {
   transform: scale(1.1);
 }
 
-.name{
-  
 
-}
-@media (max-width:700px){
+@media (max-width:600px){
   .name{
 
     border:none
 
   }
 }
-@media (min-width:700px){
+@media (min-width:601px){
   .name{
     border: none;
-     font-size: 3vh;
+     font-size: 3.3vh;
   }
+
 }
 
 
@@ -158,7 +149,7 @@ a.nav-link.flag:hover {
                 </li>  -->
 
                 <div class="dropdown ">
-                  <button class="btn btn-secondary dropdown-toggle bg-dark-subtle name"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary dropdown-toggle bg-dark-subtle name Size"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <%= newuser.name %>
                   </button>
                   <ul class="dropdown-menu">
@@ -184,7 +175,7 @@ a.nav-link.flag:hover {
                   <% } else{%> 
 
                   <li class="nav-item">
-                    <a class="home  nav-link active " aria-current="page" href="/" style="cursor: pointer; " >Home</a>
+                    <a class="home  nav-link active temp" aria-current="page" href="/" style="cursor: pointer; " >Home</a>
                   </li>
                   <% } %>
 
@@ -193,10 +184,10 @@ a.nav-link.flag:hover {
                 <% if (!locals.checkCookie) { %>
                  
                 <li class="nav-item">
-                  <a class="nav-link active home " aria-current="page" href="/user/signup" style="cursor: pointer;">Create Account</a>
+                  <a class="nav-link active home temp" aria-current="page" href="/user/signup" style="cursor: pointer;">Create Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active home" aria-current="page" href="/user/Signin" style="cursor: pointer;">Signin</a>
+                  <a class="nav-link active home temp" aria-current="page" href="/user/Signin" style="cursor: pointer;">Signin</a>
                 </li>
                 <% } %>
                        

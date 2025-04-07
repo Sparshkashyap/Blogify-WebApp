@@ -1,10 +1,17 @@
 const { timeStamp, error } = require("node:console");
 const { randomBytes } = require("crypto");
 const crypto = require('crypto');
+const findOrCreate = require("mongoose-findorcreate");
 
 const mongoose = require('mongoose');
+const { type } = require("node:os");
 
 const userScehma = new mongoose.Schema({
+
+    // googleId :{
+    //     type:String,
+    //     reuire:true
+    // },
     name: {
         type: String,
         require: true,
@@ -79,6 +86,9 @@ userScehma.static("matchpassword", async function (email, password) {
 
     return check;
 })
+
+
+userScehma.plugin(findOrCreate); // ✅ Use the plugin
 
 
 const USER = mongoose.model('user', userScehma);

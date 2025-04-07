@@ -6,7 +6,18 @@
     <title>signin page</title>
     <style>
 
-      @media (max-width:700px){
+      @media (max-width:600px){
+
+        .float{
+        width: 45 vh;
+      animation: floatUpDown 3s ease-in-out infinite;
+      }
+      @keyframes floatUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
         .icon{
           display: none;
         }
@@ -29,7 +40,7 @@
       }
 
       }
-      @media (min-width:700px){
+      @media (min-width:601px){
         .box{
         
         display: flex;
@@ -62,6 +73,17 @@
            font-weight: 500;
 
       }
+     .float{
+        
+      animation: floatUpDown 3s ease-in-out infinite;
+      width: 80vh;  
+      }
+      @keyframes floatUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
   
       }
     </style>
@@ -83,11 +105,11 @@
         
 
         <div class="container mt-4">
-          <img src="/images/logincheck.png" alt="signup" class="img-thumbnail"   loading="lazy" style="width: 80vh;    background: linear-gradient(to left, #ffe4e1, #fffafa, #ffe4e1, #e0f7fa);">
+          <img src="/images/logincheck.png" alt="signup" class=" float"   loading="lazy">
         </div>
         <div class="logindiv">
           <div class="container mt-3">
-            <img src="/images/log.png" alt="" loading="lazy" class="icon">
+            <img src="/images/log.png" alt="" loading="lazy" class="icon ">
 
           </div>
           
@@ -109,6 +131,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
 
           </form>
+           <!-- <h6><a href="/auth/google/callback">login with Google</a></h6> -->
           <div class="container mt-4" style=" display: flex; justify-content: end; ">
 
             <a href="/user/forgotpassword"  class="forgot"> Forgot password</a>
