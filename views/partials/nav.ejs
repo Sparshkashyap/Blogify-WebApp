@@ -6,8 +6,88 @@
   crossorigin="anonymous" 
   referrerpolicy="no-referrer" />
 
+  <style>
 
+
+a.nav-link.home {
+  color: white !important;
+  border-radius: 2vh;
+  transition: all 0.25s ease-in-out;
+  padding: 6px 12px; /* Reduce vertical & horizontal padding */
+  line-height: 1.2;   /* Tighter line height */
+  display: inline-block; /* Makes transform and padding work better */
+  margin-right: 15px;
+}
+
+a.nav-link.home:hover {
+  color: black !important;
+  background-color: white;
+  transform: scale(1.1);
+}
+
+a.nav-link.temp {
+  margin-top: 0.6vh;
+  color: white !important;
+  border-radius: 2vh;
+  transition: all 0.25s ease-in-out;
+  padding: 6px 12px; /* Reduce vertical & horizontal padding */
+  line-height: 1.2;   /* Tighter line height */
+  display: inline-block; /* Makes transform and padding work better */
+  margin-right: 15px;
+  margin-top: 0.3vh;
+
+
+}
+
+a.nav-link.temp:hover {
+  color: black !important;
+  background-color: white;
+  transform: scale(1.1);
+  margin-top: 0.5vh;
+}
+
+a.nav-link.flag {
+  margin-top: 0.6vh;
+  color: rgb(255, 243, 7) !important;
+  border-radius: 2vh;
+  transition: all 0.25s ease-in-out;
+  padding: 6px 12px; /* Reduce vertical & horizontal padding */
+  line-height: 1.2;   /* Tighter line height */
+  display: inline-block; /* Makes transform and padding work better */
+  margin-right: 15px;
+  margin-top: 0.5vh;
+
+
+}
+
+a.nav-link.flag:hover {
+  color: rgb(0, 0, 0) !important;
+  background-color: white;
+  transform: scale(1.1);
+}
+
+.name{
   
+
+}
+@media (max-width:700px){
+  .name{
+
+    border:none
+
+  }
+}
+@media (min-width:700px){
+  .name{
+    border: none;
+     font-size: 3vh;
+  }
+}
+
+
+
+
+  </style>
 </head>
 
 
@@ -24,22 +104,22 @@
               <% if (locals.newuser && locals.checkCookie) { %>
 
                 <li class="nav-item">
-                  <a class="nav-link active " style="color: yellow; cursor: pointer;" aria-current="page" href="/" >Home</a>
+                  <a class="nav-link active temp " style="color: yellow; cursor: pointer;" aria-current="page" href="/" >Home</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link active " style="color: yellow; cursor: pointer;" aria-current="page" href="/user/myblog" >MyBlog</a>
+                  <a class="nav-link active flag" style="color: yellow; cursor: pointer;" aria-current="page" href="/user/myblog" >MyBlog</a>
                 </li>
 
                 <% if (locals.exist) { %>
                  
                 <% } else{%>
                 <li class="nav-item">
-                  <a class="nav-link active" style="color: yellow; cursor: pointer;" aria-current="page" href="/user/addblog">Add Blog</a>
+                  <a class="nav-link active flag" style="color: yellow; cursor: pointer;" aria-current="page" href="/user/addblog">Add Blog</a>
                 </li>
                 <% } %>
                 <li class="nav-item">
-                  <a class="nav-link active" style="color: yellow; cursor: pointer;" aria-current="page" href="/user/AI">New Gen AI ✨</i></a>
+                  <a class="nav-link active flag" style="color: yellow; cursor: pointer;" aria-current="page" href="/user/AI">New Gen AI ✨</i></a>
                 </li>
 
                 <% if (locals.ID && locals.temp) { %>
@@ -78,7 +158,7 @@
                 </li>  -->
 
                 <div class="dropdown ">
-                  <button class="btn btn-secondary dropdown-toggle bg-dark-subtle" style="border: none; font-size: 3vh; " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary dropdown-toggle bg-dark-subtle name"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <%= newuser.name %>
                   </button>
                   <ul class="dropdown-menu">
@@ -95,16 +175,16 @@
 
                   <% if (locals.checkCookie) { %>
                     <li class="nav-item">
-                      <a class="nav-link active" style="color: yellow; cursor: pointer;" aria-current="page" href="/">Home</a>
+                      <a class="nav-link active flag" style="color: yellow; cursor: pointer;" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active " style="color: yellow; cursor: pointer;" aria-current="page" href="/user/myblog" >MyBlog</a>
+                      <a class="nav-link active flag" style="color: yellow; cursor: pointer;" aria-current="page" href="/user/myblog" >MyBlog</a>
                     </li>
                    
                   <% } else{%> 
 
                   <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="/" style="cursor: pointer;">Home</a>
+                    <a class="home  nav-link active " aria-current="page" href="/" style="cursor: pointer; " >Home</a>
                   </li>
                   <% } %>
 
@@ -113,10 +193,10 @@
                 <% if (!locals.checkCookie) { %>
                  
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/user/signup" style="cursor: pointer;">Create Account</a>
+                  <a class="nav-link active home " aria-current="page" href="/user/signup" style="cursor: pointer;">Create Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/user/Signin" style="cursor: pointer;">Signin</a>
+                  <a class="nav-link active home" aria-current="page" href="/user/Signin" style="cursor: pointer;">Signin</a>
                 </li>
                 <% } %>
                        
