@@ -36,7 +36,7 @@ const userScehma = new mongoose.Schema({
     },
     profileImage:{
         type: String,
-        default:"/images/avtar.png"
+        default:"/images/man.png"
     }
 }, { timestamps: true });
 
