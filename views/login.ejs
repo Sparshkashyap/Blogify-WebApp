@@ -8,15 +8,7 @@
 
       @media (max-width:600px){
 
-        .float{
-        width: 45 vh;
-      animation: floatUpDown 3s ease-in-out infinite;
-      }
-      @keyframes floatUpDown {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
-    }
+
 
         .icon{
           display: none;
@@ -38,6 +30,15 @@
         font-weight: 500;
 
       }
+      .float{
+        width: 45vh;
+      animation: floatUpDown 3s ease-in-out infinite;
+      }
+      @keyframes floatUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
 
       }
       @media (min-width:601px){
