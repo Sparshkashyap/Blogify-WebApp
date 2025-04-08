@@ -30,6 +30,51 @@
              background: #1f1f1f;
 
         }
+
+        .card-s {
+      width: 300px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-img-s {
+      width: 100%;
+      height: 200px;
+      object-fit:cover; 
+      object-position: center center; /* or just 'center' */
+    }
+
+    .card-content-s {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title-s {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .card-button-s {
+      margin-top: auto;
+      padding: 10px 16px;
+      margin-bottom: 3vh;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
    
     </style>
 </head>     
@@ -49,14 +94,14 @@
             <% if (JSON.stringify(blog.createdBy) == JSON.stringify(user_blog_id)) { %>
 
 
-                <div class="card Hover" style="width:15rem; flex-grow:0;">
+                <div class="card Hover card-s" style="width:15rem; flex-grow:0;">
 
-                    <img src= "<%= blog.coverImg %>" class="card-img-top "  loading="lazy" alt="" style="object-fit:cover;">
+                    <img src= "<%= blog.coverImg %>" class="card-img-top card-img-s"  loading="lazy" alt="" style="object-fit:cover;">
 
-                    <div class="card-body">
-                      <h5 class="card-title"><%= blog.title %></h5>
+                    <div class="card-body card-content-s">
+                      <h5 class="card-title card-title-s"><%= blog.title %></h5>
                 
-                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary">Read More</a>
+                      <a href= "<%= `/blog/${blog._id}` %>" class="btn btn-primary card-button-s">Read More</a>
                       
                     </div>
 
