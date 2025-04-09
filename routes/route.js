@@ -14,6 +14,8 @@ const crypto = require('crypto');
 const {GoogleGenerativeAI} = require('@google/generative-ai');
 const ques  = require('../models/prompt');
 const passport = require('passport');
+const like = require('../models/like');
+const { default: mongoose } = require('mongoose');
 
 
 // router.get('/auth/google',
@@ -197,6 +199,11 @@ router.get('/blog/:id',async (req,res)=>{
 
 
         // console.log(finduserblog);
+
+    const _id = finduserblog._id;
+
+    // console.log(_id);   // Blog id direct get here
+    
         
       
     const ID = finduserblog.createdBy
@@ -227,6 +234,8 @@ router.get('/blog/:id',async (req,res)=>{
 
     const user_data = data?.payload;
 
+    
+    // console.log(like.likecount);
 
     // console.log(JSON.stringify(blogid));
 
@@ -243,6 +252,9 @@ router.get('/blog/:id',async (req,res)=>{
         lis_user:alluser,
         ID,
         temp,
+        count:0,
+        _id
+        
 
     });
 
@@ -254,6 +266,34 @@ catch(err){
     
 }
 });
+
+
+router.post('/likepost/:id',async (req,res)=>{
+
+    const id = req.params.id;
+    const body = req.body;
+    const ID = await blog.findById(id);
+    console.log(body);
+
+    // await mongoose.create({
+    //     blogId:ID?._id
+    //     likecount:
+    // })
+
+    return res.redirect(`/blog/${id}`);
+    
+
+})
+
+
+
+
+
+
+
+
+
+
 
 
 

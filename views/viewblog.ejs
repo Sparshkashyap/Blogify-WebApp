@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>view_blog</title>
     <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        
        
         @media (max-width:600px) {
 
@@ -19,11 +21,15 @@
             .div1{
             justify-self: center;
             font-family: Segoe UI;
-            font-size: 5.2vh;
+            font-size: 4vh;
             font-weight: 700;
-            text-shadow:  -2px -2px 0 aqua, 4px -1px 0 aqua, -2px 2px 0 aqua, 2px 2px 0 aqua;
+            /* text-shadow:  -2px -2px 0 rgb(12, 9, 11), 4px -1px 0 rgb(13, 17, 17), -2px 2px 0 rgb(20, 29, 29), 2px 2px 0 rgb(1, 4, 4); */
             color: aliceblue;
+            /* text-shadow: -2px -2px 0 rgba(0,0,0,0.7), 2px -2px 0 rgba(0,0,0,0.6), -2px 2px 0 rgba(0,0,0,0.5), 2px 2px 0 rgba(0,0,0,0.6); */
             text-align: center;
+            text-shadow: -2px -2px 0 rgb(10, 10, 10), 2px -2px 0 rgb(15, 15, 15), -2px 2px 0 rgb(20, 20, 20), 2px 2px 0 rgb(25, 25, 25);
+             
+             /* text-shadow: -2px -2px 0 rgb(0, 255, 255), 2px -2px 0 rgb(0, 200, 200), -2px 2px 0 rgb(0, 150, 150), 2px 2px 0 rgb(0, 100, 100); */
             /* margin-left: 5vh; */
             
         }
@@ -42,7 +48,7 @@
         .body{
                 justify-self: center;
                 font-weight: 700;
-                font-size: 3.0vh;
+                font-size: 2.3vh;
                 font-family: Segoe UI;
                 text-align: left;
                 align-items: center;
@@ -51,9 +57,7 @@
                 flex-direction: row;
                 word-wrap: break-word;
                 margin: 0%;
-                padding: 1px;
-         
-                /* border:2px solid gray; */
+                 padding: 1vh 2vh;
                 display: flex;
                 justify-content: center;
         }
@@ -202,13 +206,17 @@
             <img src="<%= user.profileImage%>" class="profileimage" width="100vh" loading="lazy">
             <h4><%= user.name%></h4>
             <% if (locals.newuser && locals.checkCookie) { %>
-                  
+
+                 
                     <% if (newuser._id == ID) { %>
 
                     <a href="<%= `/user/profileImageUpdate/${newuser._id}` %>"  class="pencil" ><img src="/images/updateimg.png" alt="profileuploadedimage" class="checkicon" loading="lazy"></a>
                    
-                 
-                     
+<!--                  
+                        <form action="/user/likepost/<%= _id %>" method="post" id="<%= _id %>"></form>
+                        <span id="like" onclick="toggle()"><i class="fa-regular fa-heart" style="color: #100f0f"></i></span>
+                        <input type="checkbox" id="check" style="display:none">
+                        <span><%= count %></span> -->
                     <% } %>
              
             <% } %>
@@ -305,6 +313,48 @@
         </div>
 
     </div> 
+
+    <script>
+
+        function toggle(){
+
+            const like = document.getElementById('like');
+            const check = document.getElementById('check');
+          
+
+            check.checked = !check.checked;
+
+            if(check.checked){
+
+                //   like.textContent = '❤️';
+
+                like.innerHTML = '<i class="fa-solid fa-heart" style="color: #eb1405;"></i>';
+
+                document.getElementById(`${_id}`).submit();
+
+           
+
+            }
+            else{
+
+      
+
+                like.innerHTML = '<i class="fa-regular fa-heart" style="color: #100f0f;"></i>';
+
+            }
+
+            
+
+            console.log(like.innerHTML);
+            console.log(check.checked);
+            console.log(count.value);
+            
+            
+            
+
+        }
+
+    </script>
 
     <%- include('./partials/script.ejs') %>
 </body>
